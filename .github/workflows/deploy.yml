@@ -1,0 +1,41 @@
+name: Arweave Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  Arweave-build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20"
+
+      - name: Check required secrets
+        run: |
+          if [ -z "$DEPLOY_KEY" ]; then
+            echo "Error: DEPLOY_KEY secret is required but not set"
+            exit 1
+          fi
+          if [ -z "$DEPLOY_ANT_PROCESS" ]; then
+            echo "Error: DEPLOY_ANT_PROCESS secret is required but not set"
+            exit 1
+          fi
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          DEPLOY_ANT_PROCESS: ${{ secrets.DEPLOY_ANT_PROCESS }}
+
+      - name: Run deployment script
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          DEPLOY_ANT_PROCESS: ${{ secrets.DEPLOY_ANT_PROCESS }}
+          DEPLOY_UNDERNAME: ${{ secrets.DEPLOY_UNDERNAME }}
+        run: |
+          npm install
+          npm run deploy

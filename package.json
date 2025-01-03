@@ -7,9 +7,11 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build && permaweb-deploy --deploy-folder ./src/dist --ant-process $DEPLOY_ANT_PROCESS_ID ${DEPLOY_UNDERNAME:+--undername $DEPLOY_UNDERNAME}"
   },
   "dependencies": {
+    "permaweb-deploy": "1.1.10",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
