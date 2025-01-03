@@ -29,7 +29,7 @@ Optional secret:
 3. `DEPLOY_UNDERNAME`: If you want to deploy to an undername of your ArNS name, set this secret to the desired undername
 
 To add these secrets:
-1. Go to your [repository's secrets settings](../../settings/secrets/actions)
+1. Go to your [repository's secrets settings](../../../settings/secrets/actions)
 2. Click "New repository secret"
 3. Add the secrets with their respective values
 
