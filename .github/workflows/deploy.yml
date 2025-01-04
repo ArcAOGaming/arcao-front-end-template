@@ -1,5 +1,6 @@
 name: Arweave Deploy
 
+# Trigger deployment only when pushing to the master branch
 on:
   push:
     branches:
@@ -10,13 +11,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Check out the repository code
       - uses: actions/checkout@v2
 
+      # Set up Node.js environment
       - name: Setup Node.js environment
         uses: actions/setup-node@v2
         with:
           node-version: "20"
 
+      # Verify that required secrets are present
+      # DEPLOY_KEY: Your Arweave wallet key (required)
+      # DEPLOY_ANT_PROCESS_ID: Your ArNS name's ANT process ID (required)
+      # DEPLOY_UNDERNAME: Optional undername to deploy to
       - name: Check required secrets
         run: |
           if [ -z "$DEPLOY_KEY" ]; then
@@ -31,11 +38,23 @@ jobs:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
           DEPLOY_ANT_PROCESS_ID: ${{ secrets.DEPLOY_ANT_PROCESS_ID }}
 
-      - name: Run deployment script
+      # Install project dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # If DEPLOY_UNDERNAME is not set, deploy directly to the ArNS name
+      - name: Deploy (without undername)
+        if: ${{ !secrets.DEPLOY_UNDERNAME }}
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          DEPLOY_ANT_PROCESS_ID: ${{ secrets.DEPLOY_ANT_PROCESS_ID }}
+        run: npm run deploy
+
+      # If DEPLOY_UNDERNAME is set, deploy to the specified undername
+      - name: Deploy (with undername)
+        if: ${{ secrets.DEPLOY_UNDERNAME }}
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
           DEPLOY_ANT_PROCESS_ID: ${{ secrets.DEPLOY_ANT_PROCESS_ID }}
           DEPLOY_UNDERNAME: ${{ secrets.DEPLOY_UNDERNAME }}
-        run: |
-          npm install
-          npm run deploy
+        run: npm run deploy-undername
