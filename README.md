@@ -1,6 +1,20 @@
 # React + TypeScript + Vite + PermawebDeploy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div align="center">
+
+[![Live Demo](https://img.shields.io/badge/demo-live-green?style=for-the-badge)](https://frontendtemplate_game.permagate.io/)
+
+[View Live Demo](https://frontendtemplate_game.permagate.io/) • [Development Guide](docs/development.md) • [Deployment Guide](docs/deployment.md)
+
+</div>
+
+A modern web application template built with:
+- [React](https://react.dev/) - A JavaScript library for building user interfaces
+- [TypeScript](https://www.typescriptlang.org/) - JavaScript with syntax for types
+- [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling
+- [ArNS](https://ar.io/arns/) - The Permaweb Name System for permanent web deployment
+
+This template provides a minimal setup to get started with React development and automated deployment to the permaweb through ArNS.
 
 ## Getting Started
 

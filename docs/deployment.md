@@ -7,10 +7,10 @@ This template is configured for automatic deployment to Arweave using permaweb-d
 Before you can deploy, you'll need:
 
 1. An Arweave wallet with:
-   - Sufficient [Turbo Credits](https://docs.ardrive.io/docs/turbo/what-is-turbo.html) for deployment
+   - Sufficient [Turbo Credits](https://docs.ardrive.io/docs/turbo/what-is-turbo.html) for deployment (purchase at [turbo-topup.com](https://turbo-topup.com/))
    - Owner or controller access to your target ArNS name
 
-2. Your ArNS name's ANT process ID (found on arns.app)
+2. Your ArNS name's ANT process ID (found on [arns.app](https://arns.app/#/manage/names))
 
 ## Setup GitHub Secrets
 
@@ -22,7 +22,11 @@ You'll need to set up two required GitHub secrets in your repository:
      - On Linux: `base64 wallet.json | xclip -selection clipboard`
      - On Windows: `base64 wallet.json | clip`
 
-2. `DEPLOY_ANT_PROCESS`: Your ArNS name's ANT process ID
+2. `DEPLOY_ANT_PROCESS_ID`: Your ArNS name's ANT process ID
+   - Go to [arns.app/#/manage/names](https://arns.app/#/manage/names)
+   - Connect your wallet that owns or controls the ArNS name
+   - Find your ArNS name in the list
+   - The process ID will be displayed with your name details
 
 Optional secret:
 
