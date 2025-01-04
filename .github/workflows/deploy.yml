@@ -42,19 +42,17 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # If DEPLOY_UNDERNAME is not set, deploy directly to the ArNS name
-      - name: Deploy (without undername)
-        if: ${{ !secrets.DEPLOY_UNDERNAME }}
-        env:
-          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-          DEPLOY_ANT_PROCESS_ID: ${{ secrets.DEPLOY_ANT_PROCESS_ID }}
-        run: npm run deploy
-
-      # If DEPLOY_UNDERNAME is set, deploy to the specified undername
-      - name: Deploy (with undername)
-        if: ${{ secrets.DEPLOY_UNDERNAME }}
+      # Run the appropriate deploy script based on whether DEPLOY_UNDERNAME is set
+      - name: Deploy
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
           DEPLOY_ANT_PROCESS_ID: ${{ secrets.DEPLOY_ANT_PROCESS_ID }}
           DEPLOY_UNDERNAME: ${{ secrets.DEPLOY_UNDERNAME }}
-        run: npm run deploy-undername
+        run: |
+          if [ -n "$DEPLOY_UNDERNAME" ]; then
+            echo "Deploying with undername: $DEPLOY_UNDERNAME"
+            npm run deploy-undername
+          else
+            echo "Deploying without undername"
+            npm run deploy
+          fi
