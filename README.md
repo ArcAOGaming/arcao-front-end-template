@@ -2,9 +2,9 @@
 
 <div align="center">
 
-[![Live Demo](https://img.shields.io/badge/demo-live-green?style=for-the-badge)](https://frontendtemplate_game.permagate.io/)
+[![Live Demo](https://img.shields.io/badge/demo-live-green?style=for-the-badge)](https://frontendtemplate_game.ar.io/)
 
-[View Live Demo](https://frontendtemplate_game.permagate.io/) • [Development Guide](docs/development.md) • [Deployment Guide](docs/deployment.md)
+[View Live Demo](https://frontendtemplate_game.ar.io/) • [Development Guide](docs/development.md) • [Deployment Guide](docs/deployment.md)
 
 </div>
 
