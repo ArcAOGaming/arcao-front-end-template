@@ -23,18 +23,18 @@ jobs:
             echo "Error: DEPLOY_KEY secret is required but not set"
             exit 1
           fi
-          if [ -z "$DEPLOY_ANT_PROCESS" ]; then
-            echo "Error: DEPLOY_ANT_PROCESS secret is required but not set"
+          if [ -z "$DEPLOY_ANT_PROCESS_ID" ]; then
+            echo "Error: DEPLOY_ANT_PROCESS_ID secret is required but not set"
             exit 1
           fi
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-          DEPLOY_ANT_PROCESS: ${{ secrets.DEPLOY_ANT_PROCESS }}
+          DEPLOY_ANT_PROCESS_ID: ${{ secrets.DEPLOY_ANT_PROCESS_ID }}
 
       - name: Run deployment script
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-          DEPLOY_ANT_PROCESS: ${{ secrets.DEPLOY_ANT_PROCESS }}
+          DEPLOY_ANT_PROCESS_ID: ${{ secrets.DEPLOY_ANT_PROCESS_ID }}
           DEPLOY_UNDERNAME: ${{ secrets.DEPLOY_UNDERNAME }}
         run: |
           npm install
