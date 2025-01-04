@@ -1,4 +1,4 @@
-import reactLogo from './assets/react.svg'
+import reactLogo from '/react.svg'
 import viteLogo from '/vite.svg'
 import arioLogo from '/ario_black.png'
 import arcaoLogo from '/arcao.png'

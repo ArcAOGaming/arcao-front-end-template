@@ -1,3 +1,5 @@
+import './LogoLink.css'
+
 interface LogoLinkProps {
   href: string
   src: string
