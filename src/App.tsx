@@ -1,32 +1,41 @@
-import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import arioLogo from '/ario_black.png'
+import arcaoLogo from '/arcao.png'
 import './App.css'
+import { Counter } from './components/Counter'
+import { LogoLink } from './components/LogoLink'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <LogoLink
+          href="https://vitejs.dev"
+          src={viteLogo}
+          alt="Vite logo"
+        />
+        <LogoLink
+          href="https://react.dev"
+          src={reactLogo}
+          alt="React logo"
+          className="logo react"
+        />
+        <LogoLink
+          href="https://ar.io"
+          src={arioLogo}
+          alt="AR.IO logo"
+        />
+        <LogoLink
+          href="https://discord.gg/arc-ao"
+          src={arcaoLogo}
+          alt="ArcAO logo"
+        />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
+      <h1>Vite + React + AR.IO + ArcAO</h1>
+      <Counter />
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+        Click on the Vite, React, AR.IO and ArcAO logos to learn more
       </p>
     </>
   )
