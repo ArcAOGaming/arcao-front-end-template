@@ -12,9 +12,11 @@ Before you can deploy, you'll need:
 
 2. Your ArNS name's ANT process ID (found on [arns.app](https://arns.app/#/manage/names))
 
-## Setup GitHub Secrets
+## Setup GitHub Variables and Secrets
 
-You'll need to set up two required GitHub secrets in your repository:
+You'll need to set up one secret and two variables in your repository:
+
+### Required Secret:
 
 1. `DEPLOY_KEY`: Your base64-encoded Arweave wallet keyfile
    - To convert your wallet file to base64:
@@ -22,24 +24,32 @@ You'll need to set up two required GitHub secrets in your repository:
      - On Linux: `base64 wallet.json | xclip -selection clipboard`
      - On Windows: `base64 wallet.json | clip`
 
-2. `DEPLOY_ANT_PROCESS_ID`: Your ArNS name's ANT process ID
+### Required Variables:
+
+1. `DEPLOY_ARNS_NAME`: Your ArNS name's ANT process ID
    - Go to [arns.app/#/manage/names](https://arns.app/#/manage/names)
    - Connect your wallet that owns or controls the ArNS name
    - Find your ArNS name in the list
    - The process ID will be displayed with your name details
 
-Optional secret:
+### Optional Variable:
 
-3. `DEPLOY_UNDERNAME`: If you want to deploy to an undername of your ArNS name, set this secret to the desired undername
+1. `DEPLOY_UNDERNAME`: If you want to deploy to an undername of your ArNS name, set this variable to the desired undername
 
-To add these secrets:
-1. Go to your [repository's secrets settings](../../../settings/secrets/actions)
-2. Click "New repository secret"
-3. Add the secrets with their respective values
+To add these configurations:
+1. Go to your repository's settings
+2. For the secret:
+   - Navigate to Settings > Secrets and variables > Actions > Secrets
+   - Click "New repository secret"
+   - Add `DEPLOY_KEY` with your base64-encoded wallet keyfile
+3. For the variables:
+   - Navigate to Settings > Secrets and variables > Actions > Variables
+   - Click "New repository variable"
+   - Add the variables with their respective values
 
 ## Deployment
 
-Once the secrets are set up, deployment is automatic:
+Once the configurations are set up, deployment is automatic:
 - Every push to the `main` branch will trigger a deployment
 - The app will be built and deployed to Arweave
 - Your ArNS name will be updated to point to the new deployment
