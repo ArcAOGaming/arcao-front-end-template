@@ -1,17 +1,19 @@
-import { HashRouter, Routes, Route } from 'react-router-dom'
-import { Layout } from './shared/components'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Layout, Analytics } from './shared/components'
 import { Home, About } from './pages'
 
 function App() {
   return (
-    <HashRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-      </Layout>
-    </HashRouter>
+    <BrowserRouter>
+      <Analytics>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </Layout>
+      </Analytics>
+    </BrowserRouter>
   )
 }
 
