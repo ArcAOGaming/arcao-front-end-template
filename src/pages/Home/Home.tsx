@@ -1,41 +1,28 @@
-import reactLogo from '/react.svg'
-import viteLogo from '/vite.svg'
-import arioLogo from '/ario_black.png'
-import arcaoLogo from '/arcao.png'
+import { useState } from 'react'
 import { Counter, LogoLink } from '../../shared/components'
 import './Home.css'
 
-export function Home() {
+function Home() {
+  const [count, setCount] = useState(0)
+
   return (
     <div className="home">
-      <div className="home-logos">
+      <div className="logo-container">
         <LogoLink
-          href="https://vitejs.dev"
-          src={viteLogo}
-          alt="Vite logo"
+          href="https://ar.io"
+          src="/ario_black.png"
+          alt="AR.IO Logo"
         />
         <LogoLink
           href="https://react.dev"
-          src={reactLogo}
-          alt="React logo"
-          className="logo react"
-        />
-        <LogoLink
-          href="https://ar.io"
-          src={arioLogo}
-          alt="AR.IO logo"
-        />
-        <LogoLink
-          href="https://discord.gg/arc-ao"
-          src={arcaoLogo}
-          alt="ArcAO logo"
+          src="/react.svg"
+          alt="React Logo"
         />
       </div>
-      <h1 className="home-title">Vite + React + AR.IO + ArcAO</h1>
-      <Counter />
-      <p className="home-docs-link">
-        Click on the Vite, React, AR.IO and ArcAO logos to learn more
-      </p>
+      <h1>AR.IO + React</h1>
+      <Counter count={count} setCount={setCount} />
     </div>
   )
 }
+
+export default Home
